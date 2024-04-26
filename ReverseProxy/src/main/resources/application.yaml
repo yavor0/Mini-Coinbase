@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-management-service
+          uri: lb://user-management-service:8081
+          predicates:
+            - Path=/**
+        - id: transaction-service
+          uri: lb://transaction-service:8082
+          predicates:
+            - Path=/**
+
